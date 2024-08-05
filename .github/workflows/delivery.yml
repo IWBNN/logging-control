@@ -1,13 +1,13 @@
 name: Delivery to S3
 
-on:
-  push:
+on:   # 이벤트 트리거
+  push:  # 푸시 또는 머지 발생 시
     branches:
       - release/**  # release/ 경로 아래의 브랜치에 푸시 또는 병합될 때 실행
 
 jobs:
   build-and-delivery:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 실행 환경 (Action 을 수행할 임시 서버 정의, 향후 특정 인스턴스로 변경 가능)
 
     steps:
       - name: Checkout repository
@@ -53,4 +53,4 @@ jobs:
       - name: Delivery to S3
         if: env.NO_DEPLOY != 'true'
         run: |
-          aws s3 cp build/custom-libs/*.jar s3://simple-deploy-builds1/
+          aws s3 cp build/custom-libs/*.jar s3://sample-deploy-build-geon1/
