@@ -18,7 +18,7 @@ jobs:
         run: |
           COMMIT_MESSAGE=$(git log -1 --format='%B (%H)')
           echo "Last Commit Message: ${COMMIT_MESSAGE}"
-          if echo "${COMMIT_MESSAGE}" | grep -q "\[no deploy\]"; then
+          if echo "${COMMIT_MESSAGE}" | grep -q "\[NO_DLV\]"; then
             echo "NO_DEPLOY=true" >> $GITHUB_ENV
             echo "NO_DEPLOY set to true"
           else
